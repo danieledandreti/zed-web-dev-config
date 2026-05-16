@@ -1,0 +1,154 @@
+{
+  "proxy": null,
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+
+  // ─── Editor Base ───────────────────────────────────────────
+  "tab_size": 2,
+  "hard_tabs": false,
+  "soft_wrap": "none",
+  "preferred_line_length": 120,
+  "format_on_save": "off",
+  "buffer_font_size": 15.0,
+  "ui_font_size": 15.0,
+  "base_keymap": "VSCode",
+
+  // ─── Tema ──────────────────────────────────────────────────
+  "theme": {
+    "mode": "dark",
+    "light": "macOS Classic Light",
+    "dark": "One Dark"
+  },
+
+  // ─── Autosave ──────────────────────────────────────────────
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+
+  // ─── Session ───────────────────────────────────────────────
+  "session": {
+    "trust_all_worktrees": true
+  },
+
+  // ─── Diagnostics Inline ────────────────────────────────────
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "padding": 2
+    }
+  },
+
+  // ─── Minimap ───────────────────────────────────────────────
+  "minimap": {
+    "show": "auto"
+  },
+
+  // ─── Terminal ──────────────────────────────────────────────
+  "terminal": {
+    "dock": "bottom"
+  },
+
+  // ─── Inlay Hints ───────────────────────────────────────────
+  "inlay_hints": {
+    "enabled": true,
+    "show_value_hints": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": false,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50
+  },
+
+  // ─── Estensioni ────────────────────────────────────────────
+  "auto_install_extensions": {
+    "html": true
+  },
+
+  // ─── Configurazione per Linguaggio ─────────────────────────
+  "languages": {
+    "PHP": {
+      "tab_size": 2,
+      "soft_wrap": "none",
+      "preferred_line_length": 120,
+      "format_on_save": "off",
+      "language_servers": ["!phpactor", "..."],
+      "prettier": {
+        "allowed": false
+      }
+    },
+    "HTML": {
+      "tab_size": 2,
+      "soft_wrap": "bounded",
+      "preferred_line_length": 360,
+      "format_on_save": "off",
+      "language_servers": ["vscode-html-language-server", "..."],
+      "prettier": {
+        "allowed": true
+      }
+    },
+    "CSS": {
+      "tab_size": 2,
+      "soft_wrap": "none",
+      "preferred_line_length": 80,
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": true
+      }
+    },
+    "JavaScript": {
+      "tab_size": 2,
+      "soft_wrap": "none",
+      "preferred_line_length": 80,
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": true
+      }
+    },
+    "JSON": {
+      "tab_size": 2,
+      "soft_wrap": "none",
+      "format_on_save": "off"
+    },
+    "SQL": {
+      "tab_size": 2,
+      "soft_wrap": "none",
+      "preferred_line_length": 120,
+      "language_servers": ["..."]
+    },
+    "Markdown": {
+      "tab_size": 2,
+      "soft_wrap": "bounded",
+      "preferred_line_length": 80
+    }
+  },
+
+  // ─── LSP Settings ─────────────────────────────────────────
+  "lsp": {
+    "vscode-html-language-server": {
+      "settings": {
+        "html": {
+          "format": {
+            "tab_size": 2,
+            "hard_tabs": false,
+            "indentInnerHtml": false,
+            "contentUnformatted": "svg,script",
+            "extraLiners": "div,p"
+          }
+        }
+      }
+    }
+  }
+}

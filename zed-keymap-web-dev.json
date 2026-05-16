@@ -1,0 +1,52 @@
+[
+  // ─── Terminale ─────────────────────────────────────────────
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Toggle terminale integrato
+      "ctrl-`": "terminal_panel::ToggleFocus",
+      // Toggle sidebar sinistra (file tree)
+      "secondary-b": "workspace::ToggleLeftDock",
+      // Toggle sidebar destra (agent/chat)
+      "secondary-shift-b": "workspace::ToggleRightDock",
+      // Toggle bottom dock (terminal/problems)
+      "secondary-j": "workspace::ToggleBottomDock"
+    }
+  },
+  // ─── Editor ────────────────────────────────────────────────
+  {
+    "context": "Editor",
+    "bindings": {
+      // Formatta file corrente
+      "secondary-shift-f": "editor::Format",
+      // Duplica riga
+      "secondary-shift-d": "editor::DuplicateLineDown",
+      // Sposta riga su/giu
+      "alt-up": "editor::MoveLineUp",
+      "alt-down": "editor::MoveLineDown",
+      // Seleziona tutte le occorrenze
+      "secondary-shift-l": "editor::SelectAllMatches",
+      // Toggle commento
+      "secondary-/": "editor::ToggleComments",
+      // Vai alla definizione
+      "f12": "editor::GoToDefinition",
+      // Peek definizione
+      "alt-f12": "editor::GoToDefinitionSplit",
+      // Rinomina simbolo
+      "f2": "editor::Rename",
+      // Toggle soft wrap
+      "alt-z": "editor::ToggleSoftWrap"
+    }
+  },
+  // ─── Terminale ─────────────────────────────────────────────
+  {
+    "context": "Terminal",
+    "bindings": {
+      // Shift+Enter per newline senza eseguire
+      "shift-enter": [
+        "terminal::SendText",
+        "\u001b\r"
+      ]
+    }
+  }
+]

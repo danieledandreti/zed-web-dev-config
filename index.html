@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zed Web Dev Config</title>
+  <meta name="description" content="A practical Zed setup for PHP, HTML, CSS, JavaScript, SQL, and Markdown.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #161616;
+      --muted: #5b5f64;
+      --paper: #f7f4ee;
+      --panel: #ffffff;
+      --line: #d8d1c6;
+      --accent: #0b6f5c;
+      --accent-strong: #094d41;
+      --code: #202124;
+      --code-soft: #303236;
+      --code-text: #edf0ed;
+      --shadow: 0 24px 70px rgba(34, 31, 26, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(22, 22, 22, 0.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(22, 22, 22, 0.035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 0 32px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0;
+    }
+
+    .mark::before {
+      content: "";
+      width: 13px;
+      height: 13px;
+      border: 2px solid var(--accent);
+      transform: rotate(45deg);
+      background: var(--paper);
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.54);
+    }
+
+    .lang-toggle button {
+      min-width: 48px;
+      border: 0;
+      padding: 8px 10px;
+      color: var(--muted);
+      background: transparent;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .lang-toggle button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.78fr);
+      gap: 42px;
+      align-items: center;
+      padding: 30px 0 54px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      color: var(--accent-strong);
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(48px, 8vw, 104px);
+      line-height: 0.88;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(20px, 2.5vw, 27px);
+      line-height: 1.28;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .button.secondary:hover {
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .code-window {
+      overflow: hidden;
+      border: 1px solid #131313;
+      background: var(--code);
+      box-shadow: var(--shadow);
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: #b9beb8;
+      background: var(--code-soft);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .lights {
+      display: inline-flex;
+      gap: 7px;
+    }
+
+    .lights span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #d65f56;
+    }
+
+    .lights span:nth-child(2) {
+      background: #d6ad43;
+    }
+
+    .lights span:nth-child(3) {
+      background: #5da765;
+    }
+
+    pre {
+      margin: 0;
+      padding: 22px;
+      overflow-x: auto;
+      color: var(--code-text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .token {
+      color: #85d5c1;
+    }
+
+    .string {
+      color: #e7cc8f;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .tile {
+      min-height: 190px;
+      padding: 24px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.36);
+    }
+
+    .tile h2 {
+      margin: 0 0 14px;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .tile p,
+    .tile li {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .tile p {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .star51 {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 34px;
+      align-items: start;
+      margin-top: 54px;
+      padding: 34px 0 0;
+      border-top: 2px solid var(--ink);
+    }
+
+    .star51 h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 0.95;
+    }
+
+    .star51 p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.45;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    footer {
+      padding-top: 46px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    [data-lang] {
+      display: none;
+    }
+
+    html[data-current-lang="en"] [data-lang="en"],
+    html[data-current-lang="it"] [data-lang="it"] {
+      display: revert;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .star51 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100% - 22px, 1120px);
+        padding-top: 18px;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      .lead {
+        font-size: 19px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      pre {
+        padding: 16px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="mark">danieledandreti / zed-web-dev-config</div>
+      <div class="lang-toggle" aria-label="Language">
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="it" aria-pressed="false">IT</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow" data-lang="en">Zed 1.1.x · Web development setup</p>
+        <p class="eyebrow" data-lang="it">Zed 1.1.x · Configurazione web dev</p>
+
+        <h1>Zed Web Dev Config</h1>
+
+        <p class="lead" data-lang="en">
+          A practical Zed setup for PHP, HTML, CSS, JavaScript, SQL, and
+          Markdown. Copy the Zed config files, adapt the personal values, and start
+          from a configuration shaped by real project work.
+        </p>
+        <p class="lead" data-lang="it">
+          Una configurazione pratica di Zed per PHP, HTML, CSS, JavaScript, SQL
+          e Markdown. Copia i file di configurazione Zed, adatta i valori personali e parti da
+          un setup maturato su un progetto reale.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="zed-settings-web-dev.json" download>settings.json</a>
+          <a class="button" href="zed-keymap-web-dev.json" download>keymap.json</a>
+          <a class="button secondary" href="https://github.com/danieledandreti/zed-web-dev-config">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="code-window" aria-label="Configuration preview">
+        <div class="code-header">
+          <span class="lights" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>settings.json</span>
+        </div>
+        <pre><code>{
+  <span class="token">"tab_size"</span>: 2,
+  <span class="token">"base_keymap"</span>: <span class="string">"VSCode"</span>,
+  <span class="token">"languages"</span>: {
+    <span class="token">"PHP"</span>: {
+      <span class="token">"language_servers"</span>: [<span class="string">"!phpactor"</span>, <span class="string">"..."</span>],
+      <span class="token">"format_on_save"</span>: <span class="string">"off"</span>
+    },
+    <span class="token">"CSS"</span>: {
+      <span class="token">"format_on_save"</span>: <span class="string">"on"</span>
+    }
+  }
+}</code></pre>
+      </aside>
+    </section>
+
+    <section class="grid" aria-label="Configuration summary">
+      <article class="tile">
+        <h2 data-lang="en">What it includes</h2>
+        <h2 data-lang="it">Cosa include</h2>
+        <ul data-lang="en">
+          <li>Zed settings for common web languages.</li>
+          <li>Cross-platform keybindings based on the VS Code layout.</li>
+          <li>Diagnostics, inlay hints, minimap, and terminal preferences.</li>
+        </ul>
+        <ul data-lang="it">
+          <li>Impostazioni Zed per i linguaggi web più usati.</li>
+          <li>Keybinding cross-platform basati sulla mappa di VS Code.</li>
+          <li>Preferenze per diagnostics, inlay hints, minimap e terminale.</li>
+        </ul>
+      </article>
+
+      <article class="tile">
+        <h2 data-lang="en">Install</h2>
+        <h2 data-lang="it">Installazione</h2>
+        <p data-lang="en">
+          Open Zed's Command Palette, run <strong>zed: open settings file</strong>
+          and <strong>zed: open keymap file</strong>, then paste the downloaded
+          config into each file.
+        </p>
+        <p data-lang="it">
+          Apri la Command Palette di Zed, esegui <strong>zed: open settings file</strong>
+          e <strong>zed: open keymap file</strong>, poi incolla la configurazione
+          scaricata nei rispettivi file.
+        </p>
+      </article>
+
+      <article class="tile">
+        <h2 data-lang="en">Extensions</h2>
+        <h2 data-lang="it">Estensioni</h2>
+        <p data-lang="en">
+          Recommended core: HTML, PHP, SQL, and SCSS &amp; SASS. Snippets, LOG,
+          Git Firefly, and the macOS Classic theme are optional extras.
+        </p>
+        <p data-lang="it">
+          Nucleo consigliato: HTML, PHP, SQL e SCSS &amp; SASS. Snippet, LOG,
+          Git Firefly e tema macOS Classic sono extra opzionali.
+        </p>
+      </article>
+    </section>
+
+    <section class="star51">
+      <h2>Star51</h2>
+      <div>
+        <p data-lang="en">
+          This configuration was refined while refactoring Star51, an old
+          personal project brought back between August 2025 and April 2026,
+          cleaned up, updated for modern PHP and MySQL, and then published on
+          GitHub.
+        </p>
+        <p data-lang="it">
+          Questa configurazione è stata rifinita durante il refactor di Star51,
+          un mio vecchio progetto ripreso tra agosto 2025 e aprile 2026,
+          sistemato e aggiornato per PHP e MySQL moderni, poi reso pubblico su
+          GitHub.
+        </p>
+        <div class="links">
+          <a class="button secondary" href="https://danieledandreti.github.io/star51/">Star51 Page</a>
+          <a class="button secondary" href="https://github.com/danieledandreti/star51">Star51 GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span data-lang="en">MIT License · Built for Zed users who like fast editors and quiet friction.</span>
+      <span data-lang="it">Licenza MIT · Pensato per chi usa Zed e vuole un editor veloce, senza attriti.</span>
+    </footer>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const buttons = document.querySelectorAll("[data-set-lang]");
+    const savedLanguage = localStorage.getItem("preferred-language");
+    const initialLanguage = savedLanguage || (navigator.language.startsWith("it") ? "it" : "en");
+
+    function setLanguage(language) {
+      root.dataset.currentLang = language;
+      root.lang = language;
+      localStorage.setItem("preferred-language", language);
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.setLang === language));
+      });
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.setLang));
+    });
+
+    setLanguage(initialLanguage);
+  </script>
+</body>
+</html>
