@@ -15,6 +15,10 @@ on GitHub.
 Project page:
 `https://danieledandreti.github.io/zed-web-dev-config/`
 
+## Topics
+
+#Zed #ZedEditor #ZedConfig #ZedSettings #ZedKeymap #settingsJson #keymapJson #WebDevelopment #PHP #HTML #CSS #JavaScript #SQL #Markdown
+
 ## Files
 
 - `zed-settings-web-dev.json`: main Zed settings, written in Zed's commented

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zed Web Dev Config</title>
   <meta name="description" content="A practical Zed setup for PHP, HTML, CSS, JavaScript, SQL, and Markdown.">
+  <meta name="keywords" content="Zed, Zed editor, Zed config, Zed settings, Zed keymap, settings.json, keymap.json, web development, PHP, HTML, CSS, JavaScript, SQL, Markdown">
   <style>
     :root {
       color-scheme: light;
@@ -134,6 +135,22 @@
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 34px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      color: var(--accent-strong);
+    }
+
+    .tags span {
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.5);
     }
 
     .button {
@@ -382,6 +399,17 @@
           <a class="button" href="zed-settings-web-dev.json" download>settings.json</a>
           <a class="button" href="zed-keymap-web-dev.json" download>keymap.json</a>
           <a class="button secondary" href="https://github.com/danieledandreti/zed-web-dev-config">GitHub</a>
+        </div>
+
+        <div class="tags" aria-label="Project topics">
+          <span>#Zed</span>
+          <span>#ZedEditor</span>
+          <span>#ZedConfig</span>
+          <span>#settingsJson</span>
+          <span>#keymapJson</span>
+          <span>#WebDevelopment</span>
+          <span>#PHP</span>
+          <span>#JavaScript</span>
         </div>
       </div>
 
