@@ -7,10 +7,10 @@ This setup is designed for daily work on classic web projects: mixed PHP/HTML
 templates, CSS and JavaScript formatted with Prettier, SQL snippets, and
 Markdown notes.
 
-The configuration was refined while refactoring Star51 between August 2025 and
-April 2026. Star51 is a much older personal project that I brought back,
-cleaned up, and updated for modern PHP and MySQL before deciding to publish it
-on GitHub.
+This configuration came out of the Star51 refactor, an old personal project I
+brought back between August 2025 and April 2026. During that time I cleaned it
+up, updated it for modern PHP and MySQL, and then published it for free on
+GitHub.
 
 Project page:
 `https://danieledandreti.github.io/zed-web-dev-config/`
@@ -123,9 +123,9 @@ Check these values before copying the settings:
 ## Star51
 
 Star51 is the project where this Zed setup became stable enough to share. It is
-a refactor of a much older personal project, brought back between August 2025
-and April 2026, cleaned up, updated for modern PHP and MySQL, and then made
-public on GitHub.
+an old personal project I brought back between August 2025 and April 2026. During
+that time I cleaned it up, updated it for modern PHP and MySQL, and then
+published it for free on GitHub.
 
 - Repository: <https://github.com/danieledandreti/star51>
 - Project page: <https://danieledandreti.github.io/star51/>
@@ -135,9 +135,10 @@ public on GitHub.
 Configurazione pratica di Zed per sviluppo web con PHP, HTML, CSS,
 JavaScript, SQL e Markdown.
 
-La configurazione e' stata rifinita durante il refactor di Star51, un mio
-vecchio progetto ripreso tra agosto 2025 e aprile 2026, sistemato e aggiornato
-per PHP e MySQL moderni, poi reso pubblico su GitHub. Prima di copiarla,
+Questa configurazione e' nata durante il refactor di Star51, un mio vecchio
+progetto che ho ripreso tra agosto 2025 e aprile 2026. In quei mesi l'ho
+sistemato, aggiornato per PHP e MySQL moderni e poi reso pubblico gratuitamente
+su GitHub. Prima di copiarla,
 controlla il tema e le impostazioni che dipendono dal tuo ambiente locale. Se
 un language server richiede un percorso personalizzato di Node.js, aggiungilo
 solo nel tuo `settings.json`.
